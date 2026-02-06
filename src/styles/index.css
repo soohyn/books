@@ -1,3 +1,68 @@
-body {
+:root {
+  /* color */
+  --palette-primary: #4880ee;
+  --palette-red: #e84118;
+  --palette-gray: #dadada;
+  --palette-lightgray: #f2f4f6;
+  --palette-black: #222222;
+  --palette-white: #ffffff;
+
+  --text-primary: #353c49;
+  --text-subtilte: #8d94a0;
+  --text-secondary: #6d7582;
+
+  /* typography */
+  --font-title-1: 24px;
+  --font-title-2: 22px;
+  --font-title-3: 18px;
+  --font-body-1: 20px;
+  --font-body-2: 14px;
+  --font-caption: 16px;
+  --font-small: 10px;
+}
+
+.typo-title {
+  font-weight: bold;
+  line-height: 100%;
+}
+
+.typo-title .typo-title-1 {
+  font-size: var(--font-title-1);
+}
+
+.typo-title .typo-title-2 {
+  font-size: var(--font-title-2);
+  line-height: 24px;
+}
+
+.typo-title .typo-title-3 {
+  font-size: var(--font-title-3);
+}
+
+.typo-body {
+  font-weight: medium;
+}
+
+.typo-body .typo-body-1 {
+  font-size: var(--font-body-1);
+}
+
+.typo-body .typo-body-2 {
+  font-size: var(--font-body-2);
+}
+
+.typo-body .typo-body-2 .typo-bold {
+  font-weight: bold;
+}
+
+.typo-caption {
+  font-size: var(--font-caption);
+}
+
+.typo-small {
+  font-size: var(--font-small);
+}
+
+* {
   box-sizing: border-box;
 }
