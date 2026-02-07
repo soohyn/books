@@ -1,10 +1,12 @@
 import {
   useId,
+  useState,
   type ChangeEvent,
   type Dispatch,
   type SetStateAction,
   type SubmitEvent,
 } from "react";
+import Button from "./Button";
 
 interface SearchBoxProps {
   inputValue: string;
@@ -14,6 +16,7 @@ interface SearchBoxProps {
 
 const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
   const id = useId();
+  const [openDetailSearch, setOpenDetailSearch] = useState(false);
 
   const handleChangeinputValue = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -23,6 +26,10 @@ const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
     e.preventDefault();
 
     onSearch();
+  };
+
+  const handleOpenDetailSearch = () => {
+    setOpenDetailSearch((prev) => !prev);
   };
 
   return (
@@ -41,7 +48,20 @@ const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
         />
       </form>
 
-      <button type="button">상세검색</button>
+      <button type="button" onClick={handleOpenDetailSearch}>
+        상세검색
+      </button>
+      {openDetailSearch && (
+        <form onSubmit={handleSubmit}>
+          <select aria-label="상세 검색 항목">
+            <option value="title">제목</option>
+            <option value="ahthor">저자명</option>
+            <option value="publisher">출판사</option>
+          </select>
+          <input placeholder="검색어 입력" aria-label="상세 검색어" />
+          <Button type="submit" label="검색하기" aria-label="상세 검색하기" />
+        </form>
+      )}
     </section>
   );
 };
