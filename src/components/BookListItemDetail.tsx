@@ -10,6 +10,8 @@ interface BookListItemDetailProps {
   salePrice: number;
   isLike: boolean;
   onClickLike: (item: string) => void;
+  handleClickDetail: () => void;
+  handleClickPurchase: () => void;
 }
 
 const BookListItemDetail = ({
@@ -21,6 +23,8 @@ const BookListItemDetail = ({
   salePrice,
   isLike,
   onClickLike,
+  handleClickDetail,
+  handleClickPurchase,
 }: BookListItemDetailProps) => {
   return (
     <article>
@@ -31,8 +35,14 @@ const BookListItemDetail = ({
       <h3>{title}</h3>
       <span>{author}</span>
       <p>{contents}</p>
+      <button type="button" onClick={handleClickDetail}>
+        상세보기
+      </button>
       <span>원가 {price}</span>
       {salePrice && <span>할인가 {salePrice}</span>}
+      <button type="button" onClick={handleClickPurchase}>
+        구매하기
+      </button>
     </article>
   );
 };

@@ -19,6 +19,10 @@ const BookListItemContainer = ({
     setIsDetail((prev) => !prev);
   };
 
+  const handleClickPurchase = () => {
+    window.open(item.url);
+  };
+
   if (isDetail) {
     return (
       <BookListItemDetail
@@ -30,6 +34,8 @@ const BookListItemContainer = ({
         isLike={isLike}
         thumbnail={item.thumbnail}
         onClickLike={handleClickLike}
+        handleClickDetail={handleClickDetail}
+        handleClickPurchase={handleClickPurchase}
       />
     );
   }
@@ -41,6 +47,7 @@ const BookListItemContainer = ({
       price={item.sale_price}
       thumbnail={item.thumbnail}
       handleClickDetail={handleClickDetail}
+      handleClickPurchase={handleClickPurchase}
     />
   );
 };
