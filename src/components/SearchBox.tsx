@@ -34,6 +34,7 @@ const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
         </label>
         <input
           id={id}
+          placeholder="검색어 입력"
           type="text"
           value={inputValue}
           onChange={handleChangeinputValue}
