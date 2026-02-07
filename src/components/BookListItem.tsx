@@ -4,16 +4,23 @@ interface BookListItemProps {
   title: string;
   author: string;
   price: number;
+  thumbnail: string;
 }
 
-const BookListItem = ({ title, author, price }: BookListItemProps) => {
+const BookListItem = ({
+  title,
+  author,
+  price,
+  thumbnail,
+}: BookListItemProps) => {
   return (
     <article>
+      <img src={thumbnail} alt={title} aria-hidden={true} />
       <h3>{title}</h3>
       <span aria-label="작가">{author}</span>
       <span>{price.toLocaleString()}원</span>
-      <Button label='구매하기' />
-      <Button label='상세보기' />
+      <Button label="구매하기" />
+      <Button label="상세보기" />
     </article>
   );
 };
