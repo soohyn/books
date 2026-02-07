@@ -7,20 +7,16 @@ import {
 } from "react";
 
 interface SearchBoxProps {
-  searchQuery: string;
-  setSearchQuery: Dispatch<SetStateAction<string>>;
+  inputValue: string;
+  setInputValue: Dispatch<SetStateAction<string>>;
   onSearch: () => void;
 }
 
-const SearchBox = ({
-  searchQuery,
-  setSearchQuery,
-  onSearch,
-}: SearchBoxProps) => {
+const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
   const id = useId();
 
-  const handleChangeSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
+  const handleChangeinputValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
@@ -39,8 +35,8 @@ const SearchBox = ({
         <input
           id={id}
           type="text"
-          value={searchQuery}
-          onChange={handleChangeSearchQuery}
+          value={inputValue}
+          onChange={handleChangeinputValue}
         />
         <button type="submit">상세검색</button>
       </form>
