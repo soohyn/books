@@ -1,11 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
-import BookListItem from "../components/BookListItem";
+import { useEffect, useState } from "react";
+
 import SearchBox from "../components/SearchBox";
 import SearchCountText from "../components/SearchCountText";
 import { useQuery } from "@tanstack/react-query";
 import { requestBooks } from "../api/book";
 import NoData from "../components/NoData";
-import BookListItemDetail from "../components/BookListItemDetail";
+import BookListItemContainer from "../components/BookListItemContainer";
 
 const SEARCH_HISTORY_KEY = "search-history";
 const LIKE_KEY = "like";
@@ -27,7 +27,7 @@ function Search() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchHistory, setSearchHistory] =
     useState<string[]>(getStorageHistory);
-  const [like, setLike] = useState<string[]>(getStorageLike);
+  const [likes, setLikes] = useState<string[]>(getStorageLike);
 
   const { data } = useQuery({
     queryKey: ["books", searchQuery],
@@ -69,7 +69,7 @@ function Search() {
   };
 
   const handleClickLike = (item: string) => {
-    setLike((prev) => {
+    setLikes((prev) => {
       if (prev.includes(item)) return prev.filter((item) => item !== item);
       else return [...prev, item];
     });
@@ -80,8 +80,8 @@ function Search() {
   }, [searchHistory]);
 
   useEffect(() => {
-    setStorageLike(like);
-  }, [like]);
+    setStorageLike(likes);
+  }, [likes]);
 
   return (
     <main>
@@ -110,24 +110,12 @@ function Search() {
         {(data?.meta.total_count ?? 0 > 0) ? (
           data?.documents.map((item, index) => {
             return (
-              <Fragment key={item.title + index}>
-                <BookListItem
-                  title={item.title}
-                  author={item.authors.join(", ")}
-                  price={item.sale_price}
-                  thumbnail={item.thumbnail}
-                />
-                <BookListItemDetail
-                  title={item.title}
-                  author={item.authors.join(", ")}
-                  price={item.price}
-                  salePrice={item.sale_price}
-                  contents={item.contents}
-                  isLike={like.includes(item.title)}
-                  thumbnail={item.thumbnail}
-                  onClickLike={handleClickLike}
-                />
-              </Fragment>
+              <BookListItemContainer
+                key={item.title + index}
+                item={item}
+                isLike={likes.includes(item.title)}
+                handleClickLike={handleClickLike}
+              />
             );
           })
         ) : (
