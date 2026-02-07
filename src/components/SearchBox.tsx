@@ -38,8 +38,9 @@ const SearchBox = ({ inputValue, setInputValue, onSearch }: SearchBoxProps) => {
           value={inputValue}
           onChange={handleChangeinputValue}
         />
-        <button type="submit">상세검색</button>
       </form>
+
+      <button type="button">상세검색</button>
     </section>
   );
 };
