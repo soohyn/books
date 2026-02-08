@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-import SearchBox from "../components/search/SearchBox";
-import SearchCountText from "../components/SearchCountText";
 import { useQuery } from "@tanstack/react-query";
+
+import SearchBox from "../components/search/SearchBox";
 import { requestBooks } from "../api/book";
 import NoData from "../components/NoData";
 import BookListItemContainer from "../components/book/BookListItemContainer";
 import { useLikeStorage } from "../hooks/useLikeStorage";
+import CountText from "../components/CountText";
 
 const SEARCH_HISTORY_KEY = "search-history";
 
@@ -75,37 +76,34 @@ function Search() {
   }, [searchHistory]);
 
   return (
-    <main>
-      <section>
-        <h2 className="sr-only">Search</h2>
-        <SearchBox
-          inputValue={inputValue}
-          selectValue={selectValue}
-          setInputValue={setInputValue}
-          setSelectValue={setSelectValue}
-          onSearch={handleOnSearch}
-          searchHistory={searchHistory}
-          deleteSearchHistory={deleteSearchHistory}
-          handleClickHistory={handleClickHistory}
-        />
+    <section className="w-full">
+      <SearchBox
+        inputValue={inputValue}
+        selectValue={selectValue}
+        setInputValue={setInputValue}
+        setSelectValue={setSelectValue}
+        onSearch={handleOnSearch}
+        searchHistory={searchHistory}
+        deleteSearchHistory={deleteSearchHistory}
+        handleClickHistory={handleClickHistory}
+      />
 
-        <SearchCountText count={data?.meta.total_count ?? 0} />
-        {(data?.meta.total_count ?? 0 > 0) ? (
-          data?.documents.map((item, index) => {
-            return (
-              <BookListItemContainer
-                key={item.title + index}
-                item={item}
-                isLike={likes.includes(item.title)}
-                handleClickLike={handleClickLike}
-              />
-            );
-          })
-        ) : (
-          <NoData message="검색된 결과가 없습니다." />
-        )}
-      </section>
-    </main>
+      <CountText label="도서 검색 결과" count={data?.meta.total_count ?? 0} />
+      {(data?.meta.total_count ?? 0 > 0) ? (
+        data?.documents.map((item, index) => {
+          return (
+            <BookListItemContainer
+              key={item.title + index}
+              item={item}
+              isLike={likes.includes(item.title)}
+              handleClickLike={handleClickLike}
+            />
+          );
+        })
+      ) : (
+        <NoData message="검색된 결과가 없습니다." />
+      )}
+    </section>
   );
 }
 

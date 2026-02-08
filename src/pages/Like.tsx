@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import BookListItemContainer from "../components/book/BookListItemContainer";
 import NoData from "../components/NoData";
 import { useLikeStorage } from "../hooks/useLikeStorage";
+import CountText from "../components/CountText";
 
 interface BooksResponse {
   documents: Document[];
@@ -31,12 +32,15 @@ function Like() {
   });
 
   return (
-    <main>
-      <section>
-        <h2 className="sr-only">Like</h2>
-        {likes.length > 0 ? itemMap : <NoData message="찜한 책이 없습니다." />}
-      </section>
-    </main>
+    <section className="w-full">
+      <h2 className="typo-title typo-title-2 mb-7">내가 찜한 책</h2>
+      <CountText label="찜한 책" count={filteredBooks.length ?? 0} />
+      {filteredBooks.length > 0 ? (
+        itemMap
+      ) : (
+        <NoData message="찜한 책이 없습니다." />
+      )}
+    </section>
   );
 }
 

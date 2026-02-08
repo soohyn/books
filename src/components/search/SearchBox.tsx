@@ -49,7 +49,7 @@ const SearchBox = ({
 
   return (
     <section>
-      <h3 className="typo-title typo-title-2 mb-7">도서 검색</h3>
+      <h2 className="typo-title typo-title-2 mb-7">도서 검색</h2>
       <div className="flex flex-row items-center gap-3">
         <SearchInput
           searchHistory={searchHistory}
