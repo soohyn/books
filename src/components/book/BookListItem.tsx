@@ -42,7 +42,7 @@ const BookListItem = ({
       <span aria-label="가격" className="typo-title typo-title-3">
         {price}원
       </span>
-      <div role="group" className="flex gap-1 mr-4">
+      <div role="group" className="flex gap-2 mr-4">
         <Button label="구매하기" onClick={handleClickPurchase} />
         <Button
           label="상세보기"
