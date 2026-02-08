@@ -27,6 +27,7 @@
 
 * {
   box-sizing: border-box;
+  color: var(--color-text-primary);
 }
 
 .typo-title {
@@ -34,16 +35,16 @@
   line-height: 100%;
 }
 
-.typo-title .typo-title-1 {
+.typo-title-1 {
   font-size: var(--font-title-1);
 }
 
-.typo-title .typo-title-2 {
+.typo-title-2 {
   font-size: var(--font-title-2);
   line-height: 24px;
 }
 
-.typo-title .typo-title-3 {
+.typo-title-3 {
   font-size: var(--font-title-3);
 }
 
@@ -51,15 +52,15 @@
   font-weight: medium;
 }
 
-.typo-body .typo-body-1 {
+.typo-body-1 {
   font-size: var(--font-body-1);
 }
 
-.typo-body .typo-body-2 {
+.typo-body-2 {
   font-size: var(--font-body-2);
 }
 
-.typo-body .typo-body-2 .typo-bold {
+.typo-bold{
   font-weight: bold;
 }
 
