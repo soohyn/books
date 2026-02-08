@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import SearchBox from "../components/SearchBox";
+import SearchBox from "../components/search/SearchBox";
 import SearchCountText from "../components/SearchCountText";
 import { useQuery } from "@tanstack/react-query";
 import { requestBooks } from "../api/book";
