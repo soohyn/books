@@ -76,7 +76,7 @@ function Search() {
   return (
     <main>
       <section>
-        <h1>Search</h1>
+        <h2 className="sr-only">Search</h2>
         <SearchBox
           inputValue={inputValue}
           selectValue={selectValue}

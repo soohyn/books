@@ -33,7 +33,7 @@ function Like() {
   return (
     <main>
       <section>
-        <h1>Like</h1>
+        <h2 className="sr-only">Like</h2>
         {likes.length > 0 ? itemMap : <NoData message="찜한 책이 없습니다." />}
       </section>
     </main>
