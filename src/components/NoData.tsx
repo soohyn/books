@@ -6,7 +6,7 @@ interface NodataProps {
 
 const NoData = ({ message = "" }: NodataProps) => {
   return (
-    <section>
+    <section className="flex flex-col justify-center items-center w-full h-full">
       <img src={IconBook} alt="" />
       <p>{message}</p>
     </section>
