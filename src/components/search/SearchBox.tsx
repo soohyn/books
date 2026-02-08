@@ -44,22 +44,24 @@ const SearchBox = ({
   return (
     <section>
       <h3 className="typo-title typo-title-2 mb-7">도서 검색</h3>
-      <SearchInput
-        inputValue={inputValue}
-        isOpenDetailSearch={isOpenDetailSearch}
-        handleSubmit={handleSubmit}
-        handleChangeinputValue={handleChangeinputValue}
-      />
+      <div className="flex flex-row items-center gap-3">
+        <SearchInput
+          inputValue={inputValue}
+          isOpenDetailSearch={isOpenDetailSearch}
+          handleSubmit={handleSubmit}
+          handleChangeinputValue={handleChangeinputValue}
+        />
 
-      <SearchDetail
-        inputValue={inputValue}
-        selectValue={selectValue ?? "title"}
-        setSelectValue={setSelectValue}
-        isOpenDetailSearch={isOpenDetailSearch}
-        handleSubmit={handleSubmit}
-        handleChangeinputValue={handleChangeinputValue}
-        handleOpenDetailSearch={handleOpenDetailSearch}
-      />
+        <SearchDetail
+          inputValue={inputValue}
+          selectValue={selectValue ?? "title"}
+          setSelectValue={setSelectValue}
+          isOpenDetailSearch={isOpenDetailSearch}
+          handleSubmit={handleSubmit}
+          handleChangeinputValue={handleChangeinputValue}
+          handleOpenDetailSearch={handleOpenDetailSearch}
+        />
+      </div>
     </section>
   );
 };

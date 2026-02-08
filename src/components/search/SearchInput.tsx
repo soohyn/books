@@ -20,7 +20,7 @@ const SearchInput = ({
     <form onSubmit={handleSubmit}>
       <label
         htmlFor={id}
-        className="flex gap-3 bg-palette-lightgray rounded-full py-2.5 pl-2.5 max-w-120"
+        className="flex gap-3 bg-palette-lightgray rounded-full py-2.5 pl-2.5 w-120 max-w-120"
       >
         <span className="sr-only">도서 검색어</span>
         <img src={Search} alt="" aria-hidden={true} />
