@@ -68,6 +68,7 @@ const SearchDetail = ({
             type="submit"
             label="검색하기"
             variant="primary"
+            size="sm"
             aria-label="상세 검색하기"
             className="mt-3"
           />
