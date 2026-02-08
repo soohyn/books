@@ -12,8 +12,12 @@ const Button = ({
   variant = "primary",
   ...buttonProps
 }: ButtonProps) => {
+  const baseClassName = `py-1 px-2.5 rounded-lg typo-caption`;
+  const variantClassName = `${variant === "primary" ? "bg-palette-primary text-palette-white" : "bg-palette-lightgray text-text-secondary"}`;
+  const buttonClassName = [baseClassName, variantClassName].join(" ");
+
   return (
-    <button className={`button button-${variant}`} {...buttonProps}>
+    <button className={buttonClassName} {...buttonProps}>
       {label}
     </button>
   );
