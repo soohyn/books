@@ -11,6 +11,8 @@ import CountText from "../components/CountText";
 
 const SEARCH_HISTORY_KEY = "search-history";
 
+const MAX_HISTORY = 8;
+
 const getStorageHistory = () => {
   const storageData: string = localStorage.getItem(SEARCH_HISTORY_KEY) ?? "[]";
 
@@ -43,8 +45,8 @@ function Search() {
     setSearchHistory((prev) => {
       const newHistory = prev.filter((item) => item !== searchQuery);
 
-      if (newHistory.length >= 8) {
-        return [...newHistory.slice(0, 1), searchQuery];
+      if (newHistory.length >= MAX_HISTORY) {
+        return [...newHistory.slice(1, MAX_HISTORY), searchQuery];
       } else {
         return [...newHistory, searchQuery];
       }
