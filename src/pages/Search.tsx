@@ -6,18 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 import { requestBooks } from "../api/book";
 import NoData from "../components/NoData";
 import BookListItemContainer from "../components/BookListItemContainer";
+import { useLikeStorage } from "../hooks/useLikeStorage";
 
 const SEARCH_HISTORY_KEY = "search-history";
-const LIKE_KEY = "like";
 
 const getStorageHistory = () => {
   const storageData: string = localStorage.getItem(SEARCH_HISTORY_KEY) ?? "[]";
-
-  return JSON.parse(storageData);
-};
-
-const getStorageLike = () => {
-  const storageData: string = localStorage.getItem(LIKE_KEY) ?? "[]";
 
   return JSON.parse(storageData);
 };
@@ -29,19 +23,19 @@ function Search() {
   const [searchTarget, setSearchTarget] = useState<Target | null>(null);
   const [searchHistory, setSearchHistory] =
     useState<string[]>(getStorageHistory);
-  const [likes, setLikes] = useState<string[]>(getStorageLike);
+  const { likes, toggleLike } = useLikeStorage();
 
   const { data } = useQuery({
     queryKey: ["books", searchQuery],
-    queryFn: () => requestBooks({ query: searchQuery, target: searchTarget ?? undefined }),
+    queryFn: () =>
+      requestBooks({
+        query: searchQuery,
+        target: searchTarget ?? undefined,
+      }),
   });
 
   const setStorageHistory = (searchHistory: string[]) => {
     localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
-  };
-
-  const setStorageLike = (like: string[]) => {
-    localStorage.setItem(LIKE_KEY, JSON.stringify(Array.from(like)));
   };
 
   const addSearchHistory = (searchQuery: string) => {
@@ -72,19 +66,12 @@ function Search() {
   };
 
   const handleClickLike = (item: string) => {
-    setLikes((prev) => {
-      if (prev.includes(item)) return prev.filter((item) => item !== item);
-      else return [...prev, item];
-    });
+    toggleLike(item);
   };
 
   useEffect(() => {
     setStorageHistory(searchHistory);
   }, [searchHistory]);
-
-  useEffect(() => {
-    setStorageLike(likes);
-  }, [likes]);
 
   return (
     <main>
