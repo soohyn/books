@@ -3,9 +3,11 @@ import Header from "./components/Header";
 
 function Layout() {
   return (
-    <div>
+    <div className="flex flex-col bg-red-100 items-center">
       <Header />
-      <Outlet />
+      <main className="w-full max-w-240 bg-blue-100">
+        <Outlet />
+      </main>
     </div>
   );
 }
