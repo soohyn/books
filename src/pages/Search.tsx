@@ -58,7 +58,7 @@ function Search() {
   };
 
   const handleOnSearch = () => {
-    if (!inputValue) return;
+    if (!inputValue.trim()) return;
     setSearchQuery(inputValue);
     setSearchTarget(selectValue);
     addSearchHistory(inputValue);
@@ -67,6 +67,7 @@ function Search() {
   const handleClickHistory = (history: string) => {
     setInputValue(history);
     setSearchQuery(history);
+    addSearchHistory(history)
   };
 
   const handleClickLike = (item: string) => {

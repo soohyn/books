@@ -15,7 +15,7 @@ const SearchHistory = ({
     <ul
       className="absolute bg-palette-lightgray rounded-b-3xl pl-12 w-120"
     >
-      {searchHistory.reverse().map((item, index) => {
+      {searchHistory.map((item, index) => {
         return (
           <li
             key={item + index}

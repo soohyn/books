@@ -6,8 +6,8 @@ interface SearchDetailProps {
   inputValue: string;
   selectValue: Target | null;
   isOpenDetailSearch: boolean;
+  onSearch: (e: SubmitEvent<HTMLFormElement>) => void;
   setSelectValue: Dispatch<SetStateAction<Target | null>>;
-  handleSubmit: (e: SubmitEvent<HTMLFormElement>) => void;
   handleChangeinputValue: (e: ChangeEvent<HTMLInputElement>) => void;
   handleOpenDetailSearch: () => void;
 }
@@ -16,11 +16,15 @@ const SearchDetail = ({
   inputValue,
   selectValue,
   isOpenDetailSearch,
+  onSearch,
   setSelectValue,
-  handleSubmit,
   handleChangeinputValue,
   handleOpenDetailSearch,
 }: SearchDetailProps) => {
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSearch(e);
+  };
   return (
     <section className="relative">
       <button

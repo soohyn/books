@@ -3,7 +3,6 @@ import {
   type ChangeEvent,
   type Dispatch,
   type SetStateAction,
-  type SubmitEvent,
 } from "react";
 
 import SearchInput from "./SearchInput";
@@ -36,12 +35,6 @@ const SearchBox = ({
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    onSearch();
-  };
-
   const handleOpenDetailSearch = () => {
     setIsOpenDetailSearch((prev) => !prev);
     setInputValue("");
@@ -55,7 +48,7 @@ const SearchBox = ({
           searchHistory={searchHistory}
           inputValue={inputValue}
           isOpenDetailSearch={isOpenDetailSearch}
-          handleSubmit={handleSubmit}
+          onSearch={onSearch}
           handleChangeinputValue={handleChangeinputValue}
           deleteSearchHistory={deleteSearchHistory}
           handleClickHistory={handleClickHistory}
@@ -65,8 +58,8 @@ const SearchBox = ({
           inputValue={inputValue}
           selectValue={selectValue ?? "title"}
           setSelectValue={setSelectValue}
+          onSearch={onSearch}
           isOpenDetailSearch={isOpenDetailSearch}
-          handleSubmit={handleSubmit}
           handleChangeinputValue={handleChangeinputValue}
           handleOpenDetailSearch={handleOpenDetailSearch}
         />

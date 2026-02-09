@@ -8,21 +8,27 @@ interface SearchInputProps {
   searchHistory: string[];
   deleteSearchHistory: (deleteItem: string) => void;
   handleClickHistory: (history: string) => void;
-  handleSubmit: (e: SubmitEvent<HTMLFormElement>) => void;
+  onSearch: (e: SubmitEvent<HTMLFormElement>) => void;
   handleChangeinputValue: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchInput = ({
   inputValue,
   isOpenDetailSearch,
-  handleSubmit,
   searchHistory,
   deleteSearchHistory,
+  onSearch,
   handleClickHistory,
   handleChangeinputValue,
 }: SearchInputProps) => {
   const id = useId();
   const [isFocus, setIsFocus] = useState<boolean>(false);
+
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsFocus(false);
+    onSearch(e);
+  };
 
   return (
     <form onSubmit={handleSubmit} className="relative w-120 max-w-120">
