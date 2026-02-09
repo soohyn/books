@@ -7,8 +7,8 @@ interface NodataProps {
 const NoData = ({ message = "" }: NodataProps) => {
   return (
     <section className="flex flex-col justify-center items-center w-full h-full">
-      <img src={IconBook} alt="" />
-      <p>{message}</p>
+      <img src={IconBook} alt="" aria-hidden={true} className="w-20" />
+      <p className="text-text-secondary mt-6">{message}</p>
     </section>
   );
 };

@@ -8,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full py-6">
+    <header className="w-full py-6 px-4">
       <div className="flex flex-row w-full max-w-300 mx-auto items-center">
         <Link to="/">
           <h1 className="typo-title typo-title-1 self-start">CERTICOS BOOKS</h1>

@@ -5,7 +5,7 @@ interface CountTextProps {
 
 const CountText = ({ label, count }: CountTextProps) => {
   return (
-    <section className="flex flex-row gap-4">
+    <section className="flex flex-row gap-4  mt-6">
       <span className="typo-caption">{label}</span>
       <span>
         총{" "}

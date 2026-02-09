@@ -18,7 +18,7 @@ const BookListItem = ({
   handleClickPurchase,
 }: BookListItemProps) => {
   return (
-    <article className="flex items-center py-6 gap-8">
+    <article className="flex items-center py-6 gap-8 not-last:border-b border-b-palette-gray ">
       <img
         src={thumbnail}
         className="w-12 object-cover ml-8"

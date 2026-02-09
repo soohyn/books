@@ -28,7 +28,7 @@ const BookListItemDetail = ({
   handleClickPurchase,
 }: BookListItemDetailProps) => {
   return (
-    <article className="flex gap-6 py-4">
+    <article className="flex gap-6 py-4 not-last:border-b border-b-palette-gray ">
       <div role="figure" className="flex shirink-0 relative ml-4">
         <img
           src={thumbnail}
@@ -49,7 +49,7 @@ const BookListItemDetail = ({
           <span className="typo-caption text-text-subtitle">{author}</span>
         </div>
         <span className="typo-body typo-body-2 typo-bold">책 소개</span>
-        <p className="">{contents}</p>
+        <p className="typo-small">{contents}</p>
       </div>
       <div role="group" className="flex flex-col items-end gap-3 mr-3">
         <Button
@@ -59,9 +59,9 @@ const BookListItemDetail = ({
           onClick={handleClickDetail}
         />
         <span className="typo-small text-text-subtitle">
-          원가{" "}
+          원가
           <strong
-            className={`typo-title-3 text-text-primary ${salePrice ? "line-through font-light" : "typo-title"}`}
+            className={`ml-1 typo-title-3 text-text-primary ${salePrice ? "line-through font-light" : "typo-title"}`}
           >
             {price}
           </strong>
@@ -69,7 +69,7 @@ const BookListItemDetail = ({
         {salePrice && (
           <span className="typo-small text-text-subtitle">
             할인가{" "}
-            <strong className="typo-title typo-title-3 text-text-primary">
+            <strong className="ml-1 typo-title typo-title-3 text-text-primary">
               {salePrice}
             </strong>
           </span>
@@ -77,7 +77,7 @@ const BookListItemDetail = ({
         <Button
           label="구매하기"
           onClick={handleClickPurchase}
-          className="w-60 mt-3"
+          className="w-60 mt-3 shadow-lg shadow-[#979797]/20"
         />
       </div>
     </article>
